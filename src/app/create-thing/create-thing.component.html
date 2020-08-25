@@ -1,0 +1,54 @@
+<div class="jumbotron text-center">
+	<h1 class="display-5">
+		Create a new Application-topic
+	</h1>
+</div>
+
+<div class="container">
+	<div class="row custom-wrapper">
+		<div class="col-md-12">
+
+			<!-- Form starts -->
+			<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+				<div class="group-gap">
+					<div class="d-block my-3">
+
+
+          <div class="mb-3">
+           
+            <input class="form-control" placeholder="Thing Name" id="Thing-name" formControlName="ThingName">
+            
+            <select class="custom-select" (change)="changeSensor($event)" formControlName="SensorName">
+              <option value="">Choose your Sensor</option>
+              <option *ngFor="let sensor of Sensors" [ngValue]="sensor">{{sensor}}</option>
+            </select>
+            
+        
+            <!-- error block -->
+            <div class="invalid-feedback" *ngIf="isSubmitted && SensorName.errors?.required">
+              <sup>*</sup>Please enter your Sensor
+            </div>
+
+            <select class="custom-select" name="Thresold" id="Thresold" formControlName="Thresold">
+                <option value="" disabled selected>Choose Thresold value</option>
+            </select>
+            <div class="invalid-feedback" *ngIf="isSubmitted && Thresold.errors?.required">
+                <sup>*</sup>Please enter your Thresold value
+              </div>
+
+            <button type="submit" class="btn btn-primary mb-2">Add</button>
+
+            
+          </div>            
+
+          </div>
+        </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-danger btn-lg btn-block">Submit</button>
+      </form><!-- Form ends -->
+
+    </div>
+  </div>
+</div>
+
